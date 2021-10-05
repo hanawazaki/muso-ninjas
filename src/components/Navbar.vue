@@ -4,6 +4,9 @@
       <img src="@/assets/ninja.png" alt="" />
       <h1><router-link :to="{ name: 'Home' }">Muso Ninjas</router-link></h1>
       <div class="links" v-if="user">
+        <router-link :to="{ name: 'CreatePlaylist' }"
+          >Create Playlist</router-link
+        >
         <button @click="handleClick">Logout</button>
       </div>
       <div class="links" v-else>
