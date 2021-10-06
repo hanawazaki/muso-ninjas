@@ -19,6 +19,7 @@ import useStorage from "@/composables/useStorage";
 import useCollection from "@/composables/useCollection";
 import { timestamp } from "@/firebase/config";
 import getUser from "@/composables/getUser";
+import { useRouter } from "vue-router";
 
 import { ref } from "vue";
 export default {
@@ -26,6 +27,7 @@ export default {
     const { error, addDoc } = useCollection("playlists");
     const { url, filePath, uploadImage } = useStorage();
     const { user } = getUser();
+    const router = useRouter();
 
     const title = ref("");
     const description = ref("");
@@ -37,7 +39,7 @@ export default {
       if (file.value) {
         isPending.value = true;
         await uploadImage(file.value);
-        addDoc({
+        const res = await addDoc({
           title: title.value,
           description: description.value,
           userId: user.value.uid,
@@ -51,6 +53,7 @@ export default {
 
         if (!error.value) {
           console.log("playlist added");
+          router.push({ name: "PlaylistDetails", params: { id: res.id } });
         }
       }
     };

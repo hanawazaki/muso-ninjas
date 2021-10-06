@@ -45,7 +45,6 @@ const routes = [
     beforeEnter: requireAuth,
     props: true
   }
-
 ]
 
 const router = createRouter({
