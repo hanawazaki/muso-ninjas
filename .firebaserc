@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "muso-ninja-31d77"
+  },
+  "targets": {
+    "muso-ninja-31d77": {
+      "hosting": {
+        "muso-ninja-31d77": [
+          "han-muso-ninja"
+        ]
+      }
+    }
   }
 }
